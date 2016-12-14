@@ -1,5 +1,10 @@
-app.controller('mainCtrl',['$scope','fact', function($scope,fact){
+app.controller('mainCtrl',['$scope','fact','$http', function($scope,fact,$http){
 
-  $scope.test = fact;
+  $scope.addToDb = function(){
+    $http.post('/journey', {data:$scope.input})//must use object as second parameter
+    .then(function(dataFromServer){
+      console.log(dataFromServer.data);
+    });
+  }
 
 }]);
